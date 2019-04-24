@@ -9,12 +9,13 @@
 */
 int string_length(char *s)
 {
-    char *i;
+
     int counter = 0;
-    for (i = s; *i != '\0'; i++)
+    for (; *s != '\0'; s++)
     {
         counter++;
     }
+    s = 0;
     return counter;
 }
 
@@ -26,13 +27,15 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
-
+    if (*s == '\0')
+    {
+        return s;
+    }
     char *endpoint = s + string_length(s) - 1;
     int i = 0;
     for (; endpoint >= s - 1; i++)
     {
-        char temp_array = *endpoint;
-        rv[i] = temp_array;
+        rv[i] = *endpoint;
         endpoint--;
     }
     rv[i] = '\0';

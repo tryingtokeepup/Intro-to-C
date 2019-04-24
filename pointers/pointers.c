@@ -82,19 +82,21 @@ char *find_string(char *haystack, char *needle)
 {
     int i = 0;
     int j;
-
+    int k;
     while (haystack[i] != '\0')
     {
         j = i;
-        while (haystack[j] == needle[j] && needle[j] != '\0' && haystack[j] != '\0')
+        k = 0;
+        while (haystack[j] == needle[k] && needle[k] != '\0' && haystack[j] != '\0')
         {
 
             j++;
+            k++;
         }
-        if (needle[j] == '\0')
+        if (needle[k] == '\0')
         {
 
-            return &haystack[i - 1];
+            return &haystack[i];
         }
         i++;
     }
