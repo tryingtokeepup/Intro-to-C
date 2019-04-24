@@ -52,9 +52,16 @@ void mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-    int *new_size_ptr = malloc(new_size * sizeof(int));
 
-    mem_copy(new_size_ptr, ptr, new_size);
+    int *new_size_ptr = malloc(new_size * sizeof(int));
+    if (old_size > new_size)
+    {
+        mem_copy(new_size_ptr, ptr, new_size);
+    }
+    else
+    {
+        mem_copy(new_size_ptr, ptr, old_size);
+    }
 
     free(ptr);
     return new_size_ptr;
